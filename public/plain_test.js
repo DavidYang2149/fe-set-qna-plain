@@ -7,7 +7,6 @@ const Plain = (() => {
   //debugger;
 
   // 변수 선언
-  let setValue;
   let readComponent;
   let showEffectFunction;
   let foo = '';
@@ -25,10 +24,10 @@ const Plain = (() => {
     },
     // useState 구현
     useState (initValue) {
-      foo = setValue || initValue;
-      let setFoo = (newValue) => {
+      foo = foo || initValue;
+      let setFoo = (setValue) => {
         // 성공! 그런데 왜 foo가 아니라 setValue에서 작동하지?
-        setValue = newValue();
+        foo = setValue();
         
         // renderComponent 함수 호출
         this.renderComponent(readComponent);
